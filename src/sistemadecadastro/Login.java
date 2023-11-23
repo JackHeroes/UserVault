@@ -22,9 +22,9 @@ public class Login extends javax.swing.JFrame {
         banner = new javax.swing.JPanel();
         formLogin = new javax.swing.JPanel();
         login = new javax.swing.JLabel();
-        usuario = new javax.swing.JLabel();
+        labelUsuario = new javax.swing.JLabel();
         loginUsername = new javax.swing.JTextField();
-        senha = new javax.swing.JLabel();
+        labelSenha = new javax.swing.JLabel();
         loginPassword = new javax.swing.JPasswordField();
         loginBtn = new javax.swing.JButton();
         naoTemUmaConta = new javax.swing.JLabel();
@@ -56,18 +56,13 @@ public class Login extends javax.swing.JFrame {
         login.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         login.setText("LOGIN");
 
-        usuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        usuario.setText("Usuário");
+        labelUsuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelUsuario.setText("Usuário");
 
         loginUsername.setMinimumSize(new java.awt.Dimension(330, 40));
-        loginUsername.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loginUsernameActionPerformed(evt);
-            }
-        });
 
-        senha.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        senha.setText("Senha");
+        labelSenha.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelSenha.setText("Senha");
 
         loginPassword.setPreferredSize(new java.awt.Dimension(330, 40));
 
@@ -103,8 +98,8 @@ public class Login extends javax.swing.JFrame {
                 .addGroup(formLoginLayout.createSequentialGroup()
                     .addGap(0, 0, 0)
                     .addGroup(formLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(usuario)
-                        .addComponent(senha)
+                        .addComponent(labelUsuario)
+                        .addComponent(labelSenha)
                         .addGroup(formLoginLayout.createSequentialGroup()
                             .addComponent(naoTemUmaConta)
                             .addGap(18, 18, 18)
@@ -123,11 +118,11 @@ public class Login extends javax.swing.JFrame {
                     .addGap(0, 0, 0)
                     .addComponent(login, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(18, 18, 18)
-                    .addComponent(usuario)
+                    .addComponent(labelUsuario)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(loginUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(senha)
+                    .addComponent(labelSenha)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(loginPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -254,21 +249,17 @@ public class Login extends javax.swing.JFrame {
         CADASTRO.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_signupBtnActionPerformed
-
-    private void loginUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginUsernameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_loginUsernameActionPerformed
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel banner;
     private javax.swing.JPanel formLogin;
+    private javax.swing.JLabel labelSenha;
+    private javax.swing.JLabel labelUsuario;
     private javax.swing.JLabel login;
     private javax.swing.JButton loginBtn;
     private javax.swing.JPasswordField loginPassword;
     private javax.swing.JTextField loginUsername;
     private javax.swing.JLabel naoTemUmaConta;
-    private javax.swing.JLabel senha;
     private javax.swing.JButton signupBtn;
-    private javax.swing.JLabel usuario;
     // End of variables declaration//GEN-END:variables
 }

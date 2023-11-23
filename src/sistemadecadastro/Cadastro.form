@@ -86,16 +86,16 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="loginBtn" min="-2" pref="120" max="-2" attributes="0"/>
               </Group>
-              <Component id="email" min="-2" max="-2" attributes="0"/>
-              <Component id="senha" alignment="0" min="-2" max="-2" attributes="0"/>
+              <Component id="labelEmail" min="-2" max="-2" attributes="0"/>
+              <Component id="labelSenha" alignment="0" min="-2" max="-2" attributes="0"/>
               <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="nome" min="-2" max="-2" attributes="0"/>
+                  <Component id="labelNome" min="-2" max="-2" attributes="0"/>
                   <Component id="registerPassword" max="32767" attributes="0"/>
                   <Component id="registerEmail" max="32767" attributes="0"/>
                   <Component id="registerUsername" max="32767" attributes="0"/>
                   <Component id="registerName" max="32767" attributes="0"/>
                   <Component id="SignUpBtn" max="32767" attributes="0"/>
-                  <Component id="usuario" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="labelUsuario" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="cadastrese" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -106,19 +106,19 @@
                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                   <Component id="cadastrese" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="nome" min="-2" max="-2" attributes="0"/>
+                  <Component id="labelNome" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="registerName" min="-2" pref="39" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="usuario" min="-2" pref="24" max="-2" attributes="0"/>
+                  <Component id="labelUsuario" min="-2" pref="24" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="registerUsername" min="-2" pref="39" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="email" min="-2" max="-2" attributes="0"/>
+                  <Component id="labelEmail" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="registerEmail" min="-2" pref="40" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="senha" min="-2" max="-2" attributes="0"/>
+                  <Component id="labelSenha" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="registerPassword" min="-2" pref="41" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -146,36 +146,33 @@
             <Property name="text" type="java.lang.String" value="CADASTRE-SE"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="nome">
+        <Component class="javax.swing.JLabel" name="labelNome">
           <Properties>
             <Property name="text" type="java.lang.String" value="Nome"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="registerName">
         </Component>
-        <Component class="javax.swing.JLabel" name="usuario">
+        <Component class="javax.swing.JLabel" name="labelUsuario">
           <Properties>
             <Property name="text" type="java.lang.String" value="Usu&#xe1;rio"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="registerUsername">
         </Component>
-        <Component class="javax.swing.JLabel" name="email">
+        <Component class="javax.swing.JLabel" name="labelEmail">
           <Properties>
             <Property name="text" type="java.lang.String" value="Email"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="registerEmail">
         </Component>
-        <Component class="javax.swing.JLabel" name="senha">
+        <Component class="javax.swing.JLabel" name="labelSenha">
           <Properties>
             <Property name="text" type="java.lang.String" value="Senha"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JPasswordField" name="registerPassword">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="registerPasswordActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="SignUpBtn">
           <Properties>

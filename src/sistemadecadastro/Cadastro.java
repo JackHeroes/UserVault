@@ -25,13 +25,13 @@ public class Cadastro extends javax.swing.JFrame {
         banner = new javax.swing.JPanel();
         formRegister = new javax.swing.JPanel();
         cadastrese = new javax.swing.JLabel();
-        nome = new javax.swing.JLabel();
+        labelNome = new javax.swing.JLabel();
         registerName = new javax.swing.JTextField();
-        usuario = new javax.swing.JLabel();
+        labelUsuario = new javax.swing.JLabel();
         registerUsername = new javax.swing.JTextField();
-        email = new javax.swing.JLabel();
+        labelEmail = new javax.swing.JLabel();
         registerEmail = new javax.swing.JTextField();
-        senha = new javax.swing.JLabel();
+        labelSenha = new javax.swing.JLabel();
         registerPassword = new javax.swing.JPasswordField();
         SignUpBtn = new javax.swing.JButton();
         jaPossuiUmaConta = new javax.swing.JLabel();
@@ -61,19 +61,13 @@ public class Cadastro extends javax.swing.JFrame {
         cadastrese.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cadastrese.setText("CADASTRE-SE");
 
-        nome.setText("Nome");
+        labelNome.setText("Nome");
 
-        usuario.setText("Usuário");
+        labelUsuario.setText("Usuário");
 
-        email.setText("Email");
+        labelEmail.setText("Email");
 
-        senha.setText("Senha");
-
-        registerPassword.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                registerPasswordActionPerformed(evt);
-            }
-        });
+        labelSenha.setText("Senha");
 
         SignUpBtn.setBackground(new java.awt.Color(0, 71, 171));
         SignUpBtn.setForeground(new java.awt.Color(255, 255, 255));
@@ -105,16 +99,16 @@ public class Cadastro extends javax.swing.JFrame {
                 .addComponent(jaPossuiUmaConta)
                 .addGap(18, 18, 18)
                 .addComponent(loginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(email)
-            .addComponent(senha)
+            .addComponent(labelEmail)
+            .addComponent(labelSenha)
             .addGroup(formRegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                .addComponent(nome)
+                .addComponent(labelNome)
                 .addComponent(registerPassword)
                 .addComponent(registerEmail)
                 .addComponent(registerUsername)
                 .addComponent(registerName)
                 .addComponent(SignUpBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(usuario)
+                .addComponent(labelUsuario)
                 .addComponent(cadastrese, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         formRegisterLayout.setVerticalGroup(
@@ -123,19 +117,19 @@ public class Cadastro extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addComponent(cadastrese)
                 .addGap(18, 18, 18)
-                .addComponent(nome)
+                .addComponent(labelNome)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(registerName, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(labelUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(registerUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(email)
+                .addComponent(labelEmail)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(registerEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(senha)
+                .addComponent(labelSenha)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(registerPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -170,10 +164,6 @@ public class Cadastro extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void registerPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerPasswordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_registerPasswordActionPerformed
 
     public class DatabaseManager {
         private static final String SUrl = "jdbc:MySQL://localhost:3306/uservault";
@@ -311,16 +301,16 @@ public class Cadastro extends javax.swing.JFrame {
     private javax.swing.JButton SignUpBtn;
     private javax.swing.JPanel banner;
     private javax.swing.JLabel cadastrese;
-    private javax.swing.JLabel email;
     private javax.swing.JPanel formRegister;
     private javax.swing.JLabel jaPossuiUmaConta;
+    private javax.swing.JLabel labelEmail;
+    private javax.swing.JLabel labelNome;
+    private javax.swing.JLabel labelSenha;
+    private javax.swing.JLabel labelUsuario;
     private javax.swing.JButton loginBtn;
-    private javax.swing.JLabel nome;
     private javax.swing.JTextField registerEmail;
     private javax.swing.JTextField registerName;
     private javax.swing.JPasswordField registerPassword;
     private javax.swing.JTextField registerUsername;
-    private javax.swing.JLabel senha;
-    private javax.swing.JLabel usuario;
     // End of variables declaration//GEN-END:variables
 }

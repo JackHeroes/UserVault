@@ -1,20 +1,22 @@
-
 package sistemadecadastro;
-
 import java.sql.Connection;
-import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.DriverManager;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.showMessageDialog;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Cadastro extends javax.swing.JFrame {
-
+    
     public Cadastro() {
         initComponents();
     }
-
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -183,61 +185,130 @@ public class Cadastro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_registerPasswordActionPerformed
 
-    private void SignUpBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignUpBtnActionPerformed
-        // TODO add your handling code here:
-        System.out.println("Botão clicado");
+    public class DatabaseManager {
+        private static final String SUrl = "jdbc:MySQL://localhost:3306/uservault";
+        private static final String SUser = "root";
+        private static final String SPass = "Data@Fit";
         
-        String name, username, email, password, query;
-        String SUrl, SUser, SPass;
-        SUrl = "jdbc:MySQL://localhost:3306/uservault";
-        SUser = "root";
-        SPass = "Data@Fit";
-        
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection(SUrl, SUser, SPass);
-            Statement st = con.createStatement();
-            if("".equals(registerName.getText())){
-                JOptionPane.showMessageDialog(new JFrame(), "Nome é necessário", "Erro", JOptionPane.ERROR_MESSAGE);
-            } else if ("".equals(registerUsername.getText())){
-                JOptionPane.showMessageDialog(new JFrame(), "Usuário é necessário", "Erro", JOptionPane.ERROR_MESSAGE);
-            } else if ("".equals(registerEmail.getText())){
-                JOptionPane.showMessageDialog(new JFrame(), "Email é necessário", "Erro", JOptionPane.ERROR_MESSAGE);
-            } else if ("".equals(registerPassword.getText())){
-                JOptionPane.showMessageDialog(new JFrame(), "Senha é necessário", "Erro", JOptionPane.ERROR_MESSAGE);
-            } else {
-                name = registerName.getText();
-                username = registerUsername.getText();
-                email = registerEmail.getText();
-                password = registerPassword.getText();
-                
-                 System.out.println(password);
-                 
-                query = "INSERT INTO user(username, full_name, email, password, is_staff) " +
-                             "VALUES('" + username + "', '" + name + "', '" + email + "', '" + password + "', 0)";
-                
-                st.execute(query);
-                registerName.setText("");
-                registerUsername.setText("");
-                registerEmail.setText("");
-                registerPassword.setText("");
-                showMessageDialog(null, "Conta criada com sucesso!");
+        public static Connection getConnection() throws SQLException {
+            return DriverManager.getConnection(SUrl, SUser, SPass);
+        }
+    }
+    
+    private boolean userOrEmailExists(Connection con, String username, String email) throws SQLException {
+    String query = "SELECT COUNT(*) FROM user WHERE username = ? OR email = ?";
+    
+        try (PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setString(1, username);
+            ps.setString(2, email);
+
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getInt(1) > 0; 
+                }
             }
-        } catch(Exception e) {
-            System.out.println("Error!" + e.getMessage());
+        }
+
+        return false;
+    }
+    
+    public class HashUtil {
+ 
+        public static String hashPassword(char[] password) {
+            try {
+                MessageDigest md = MessageDigest.getInstance("SHA-256");
+                md.update(new String(password).getBytes());
+
+                byte[] digest = md.digest();
+
+                StringBuilder hexString = new StringBuilder();
+                for (byte b : digest) {
+                    hexString.append(String.format("%02x", b));
+                }
+
+                return hexString.toString();
+            } catch (NoSuchAlgorithmException e) {
+                throw new RuntimeException("Erro ao criptografar a senha", e);
+            }
+        }
+    }
+     
+    private boolean isValidEmail(String email) {
+        
+        Pattern pattern = Pattern.compile("^\\S+@\\S+\\.\\S+$");
+        Matcher matcher = pattern.matcher(email);
+
+        return matcher.matches();
+    }
+        
+    private boolean isStrongPassword(char[] password) {
+        String passwordStr = new String(password);
+
+        Pattern pattern = Pattern.compile("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$");
+        Matcher matcher = pattern.matcher(passwordStr);
+
+        return matcher.find();
+    }
+       
+    private void SignUpBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignUpBtnActionPerformed
+
+        String name = registerName.getText();
+        String username = registerUsername.getText();
+        String email = registerEmail.getText();
+        char[] password = registerPassword.getPassword();
+
+        if (name.isEmpty() || username.isEmpty() || email.isEmpty() || password.length == 0) {
+            JOptionPane.showMessageDialog(new JFrame(), "Todos os campos são obrigatórios", "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+                  
+        if (!isValidEmail(email)) {
+            showMessageDialog(null, "O formato do email é inválido.");
+            return;
+        }
+                     
+        if (!isStrongPassword(password)) {
+            showMessageDialog(null, "A senha não atende aos critérios de segurança. "
+                    + "A senha precisa ter no mínimo 8 caracteres, sendo pelo menos um maiúsculo, um minusculo, um número e um caractere especial.");
+            return;
+        }
+
+        try (Connection con = DatabaseManager.getConnection()) {
+     
+            if (userOrEmailExists(con, username, email)) {
+                showMessageDialog(null, "Usuário ou email já existem. Escolha outro.");
+                return;
+            }
+            
+            String hashedPassword = HashUtil.hashPassword(password);
+            
+            String query = "INSERT INTO user(username, full_name, email, password, is_staff) VALUES (?, ?, ?, ?, 0)";
+            try (PreparedStatement ps = con.prepareStatement(query)) {
+                ps.setString(1, username);
+                ps.setString(2, name);
+                ps.setString(3, email);
+                ps.setString(4, hashedPassword);
+                
+                ps.executeUpdate();
+            }
+            
+            registerName.setText("");
+            registerUsername.setText("");
+            registerEmail.setText("");
+            registerPassword.setText("");
+            showMessageDialog(null, "Conta criada com sucesso!");
+        } catch (SQLException e) {
+            System.out.println("Erro ao acessar o banco de dados: " + e.getMessage());
         }
     }//GEN-LAST:event_SignUpBtnActionPerformed
 
-
     public static void main(String args[]) {
-
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Cadastro().setVisible(true);
-            }
+        
+        java.awt.EventQueue.invokeLater(() -> {
+            new Cadastro().setVisible(true);
         });
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton SignUpBtn;
     private javax.swing.JButton jButton1;

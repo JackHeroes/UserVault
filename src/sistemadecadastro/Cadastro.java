@@ -23,6 +23,7 @@ public class Cadastro extends javax.swing.JFrame {
     private void initComponents() {
 
         banner = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         formRegister = new javax.swing.JPanel();
         cadastrese = new javax.swing.JLabel();
         labelNome = new javax.swing.JLabel();
@@ -45,15 +46,27 @@ public class Cadastro extends javax.swing.JFrame {
         banner.setBackground(new java.awt.Color(0, 71, 171));
         banner.setPreferredSize(new java.awt.Dimension(400, 500));
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/uservault.png"))); // NOI18N
+
         javax.swing.GroupLayout bannerLayout = new javax.swing.GroupLayout(banner);
         banner.setLayout(bannerLayout);
         bannerLayout.setHorizontalGroup(
             bannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(bannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(bannerLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel1)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         bannerLayout.setVerticalGroup(
             bannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(bannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(bannerLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel1)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         cadastrese.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
@@ -302,6 +315,7 @@ public class Cadastro extends javax.swing.JFrame {
     private javax.swing.JPanel banner;
     private javax.swing.JLabel cadastrese;
     private javax.swing.JPanel formRegister;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jaPossuiUmaConta;
     private javax.swing.JLabel labelEmail;
     private javax.swing.JLabel labelNome;

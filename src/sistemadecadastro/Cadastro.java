@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.showMessageDialog;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -34,6 +35,8 @@ public class Cadastro extends javax.swing.JFrame {
         registerEmail = new javax.swing.JTextField();
         labelSenha = new javax.swing.JLabel();
         registerPassword = new javax.swing.JPasswordField();
+        labelConfirmarSenha = new javax.swing.JLabel();
+        registerConfirmPassword = new javax.swing.JPasswordField();
         SignUpBtn = new javax.swing.JButton();
         jaPossuiUmaConta = new javax.swing.JLabel();
         loginBtn = new javax.swing.JButton();
@@ -61,7 +64,7 @@ public class Cadastro extends javax.swing.JFrame {
         );
         bannerLayout.setVerticalGroup(
             bannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 600, Short.MAX_VALUE)
             .addGroup(bannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(bannerLayout.createSequentialGroup()
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -81,6 +84,8 @@ public class Cadastro extends javax.swing.JFrame {
         labelEmail.setText("Email");
 
         labelSenha.setText("Senha");
+
+        labelConfirmarSenha.setText("Confirme a sua senha");
 
         SignUpBtn.setBackground(new java.awt.Color(0, 71, 171));
         SignUpBtn.setForeground(new java.awt.Color(255, 255, 255));
@@ -109,20 +114,27 @@ public class Cadastro extends javax.swing.JFrame {
         formRegisterLayout.setHorizontalGroup(
             formRegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(formRegisterLayout.createSequentialGroup()
-                .addComponent(jaPossuiUmaConta)
-                .addGap(18, 18, 18)
-                .addComponent(loginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(labelEmail)
-            .addComponent(labelSenha)
-            .addGroup(formRegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                .addComponent(labelNome)
-                .addComponent(registerPassword)
-                .addComponent(registerEmail)
-                .addComponent(registerUsername)
-                .addComponent(registerName)
-                .addComponent(SignUpBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(labelUsuario)
-                .addComponent(cadastrese, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(formRegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelEmail)
+                    .addComponent(labelSenha)
+                    .addGroup(formRegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(labelNome)
+                        .addComponent(registerPassword)
+                        .addComponent(registerEmail)
+                        .addComponent(registerUsername)
+                        .addComponent(registerName)
+                        .addComponent(labelUsuario)
+                        .addComponent(cadastrese, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(formRegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(SignUpBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(formRegisterLayout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(jaPossuiUmaConta)
+                            .addGap(18, 18, 18)
+                            .addComponent(loginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(labelConfirmarSenha)
+                    .addComponent(registerConfirmPassword))
+                .addContainerGap())
         );
         formRegisterLayout.setVerticalGroup(
             formRegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -145,6 +157,10 @@ public class Cadastro extends javax.swing.JFrame {
                 .addComponent(labelSenha)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(registerPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(labelConfirmarSenha)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(registerConfirmPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(SignUpBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -169,7 +185,7 @@ public class Cadastro extends javax.swing.JFrame {
             .addComponent(banner, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(formRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(formRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 507, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -249,6 +265,7 @@ public class Cadastro extends javax.swing.JFrame {
         String username = registerUsername.getText();
         String email = registerEmail.getText();
         char[] password = registerPassword.getPassword();
+        char[] confirmPassword = registerConfirmPassword.getPassword();
 
         if (name.isEmpty() || username.isEmpty() || email.isEmpty() || password.length == 0) {
             JOptionPane.showMessageDialog(new JFrame(), "Todos os campos são obrigatórios", "Erro", JOptionPane.ERROR_MESSAGE);
@@ -263,6 +280,11 @@ public class Cadastro extends javax.swing.JFrame {
         if (!isStrongPassword(password)) {
             showMessageDialog(null, "A senha não atende aos critérios de segurança. "
                     + "A senha precisa ter no mínimo 8 caracteres, sendo pelo menos um maiúsculo, um minusculo, um número e um caractere especial.");
+            return;
+        }
+        
+        if (!Arrays.equals(password, confirmPassword)) {
+            showMessageDialog(null, "As senhas não coincidem. Por favor, confirme a senha corretamente.");
             return;
         }
 
@@ -289,7 +311,14 @@ public class Cadastro extends javax.swing.JFrame {
             registerUsername.setText("");
             registerEmail.setText("");
             registerPassword.setText("");
+            registerConfirmPassword.setText("");
             showMessageDialog(null, "Conta criada com sucesso!");
+            
+            Login LOGIN = new Login();
+            LOGIN.setVisible(true);
+            LOGIN.pack();
+            LOGIN.setLocationRelativeTo(null);
+        this.dispose();
         } catch (SQLException e) {
             System.out.println("Erro ao acessar o banco de dados: " + e.getMessage());
         }
@@ -316,12 +345,14 @@ public class Cadastro extends javax.swing.JFrame {
     private javax.swing.JLabel cadastrese;
     private javax.swing.JPanel formRegister;
     private javax.swing.JLabel jaPossuiUmaConta;
+    private javax.swing.JLabel labelConfirmarSenha;
     private javax.swing.JLabel labelEmail;
     private javax.swing.JLabel labelNome;
     private javax.swing.JLabel labelSenha;
     private javax.swing.JLabel labelUsuario;
     private javax.swing.JButton loginBtn;
     private javax.swing.JLabel logo;
+    private javax.swing.JPasswordField registerConfirmPassword;
     private javax.swing.JTextField registerEmail;
     private javax.swing.JTextField registerName;
     private javax.swing.JPasswordField registerPassword;

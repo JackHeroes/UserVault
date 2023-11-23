@@ -126,7 +126,11 @@ public class Staff extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void crudBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crudBtnActionPerformed
-        // TODO add your handling code here:
+        Crud CRUD = new Crud();
+        CRUD.setVisible(true);
+        CRUD.pack();
+        CRUD.setLocationRelativeTo(null);
+        this.dispose();
     }//GEN-LAST:event_crudBtnActionPerformed
 
     private void LogoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogoutBtnActionPerformed

@@ -33,9 +33,9 @@ public class Login extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("LOGIN");
         setBackground(new java.awt.Color(255, 255, 255));
-        setPreferredSize(new java.awt.Dimension(830, 500));
+        setPreferredSize(new java.awt.Dimension(800, 600));
         setResizable(false);
-        setSize(new java.awt.Dimension(830, 500));
+        setSize(new java.awt.Dimension(800, 600));
 
         banner.setBackground(new java.awt.Color(0, 71, 171));
         banner.setPreferredSize(new java.awt.Dimension(400, 500));
@@ -133,9 +133,9 @@ public class Login extends javax.swing.JFrame {
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addComponent(loginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(18, 18, 18)
-                    .addGroup(formLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(naoTemUmaConta)
-                        .addComponent(signupBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(formLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(signupBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(naoTemUmaConta))
                     .addGap(0, 0, 0)))
         );
 
@@ -151,16 +151,47 @@ public class Login extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(banner, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(banner, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(108, 108, 108)
+                .addGap(158, 158, 158)
                 .addComponent(formLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(108, 108, 108))
+                .addGap(158, 158, 158))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public class DatabaseManager {
+        private static final String SUrl = "jdbc:MySQL://localhost:3306/uservault";
+        private static final String SUser = "root";
+        private static final String SPass = "Data@Fit";
+        
+        public static Connection getConnection() throws SQLException {
+            return DriverManager.getConnection(SUrl, SUser, SPass);
+        }
+    }
+    
+    public class HashUtil {
+        
+        public static String hashPassword(char[] password) {
+            try {
+                MessageDigest md = MessageDigest.getInstance("SHA-256");
+                md.update(new String(password).getBytes());
+
+                byte[] digest = md.digest();
+
+                StringBuilder hexString = new StringBuilder();
+                for (byte b : digest) {
+                    hexString.append(String.format("%02x", b));
+                }
+
+                return hexString.toString();
+            } catch (NoSuchAlgorithmException e) {
+                throw new RuntimeException("Erro ao criptografar a senha", e);
+            }
+        }
+    }
+    
     private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
 
         String username = loginUsername.getText();
@@ -228,43 +259,9 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_loginUsernameActionPerformed
     
-    public class DatabaseManager {
-        private static final String SUrl = "jdbc:MySQL://localhost:3306/uservault";
-        private static final String SUser = "root";
-        private static final String SPass = "Data@Fit";
-        
-        public static Connection getConnection() throws SQLException {
-            return DriverManager.getConnection(SUrl, SUser, SPass);
-        }
-    }
-    
-    public class HashUtil {
-        
-        public static String hashPassword(char[] password) {
-            try {
-                MessageDigest md = MessageDigest.getInstance("SHA-256");
-                md.update(new String(password).getBytes());
-
-                byte[] digest = md.digest();
-
-                StringBuilder hexString = new StringBuilder();
-                for (byte b : digest) {
-                    hexString.append(String.format("%02x", b));
-                }
-
-                return hexString.toString();
-            } catch (NoSuchAlgorithmException e) {
-                throw new RuntimeException("Erro ao criptografar a senha", e);
-            }
-        }
-    }
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel banner;
     private javax.swing.JPanel formLogin;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JLabel login;
     private javax.swing.JButton loginBtn;
     private javax.swing.JPasswordField loginPassword;

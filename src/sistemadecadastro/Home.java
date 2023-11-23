@@ -10,48 +10,100 @@ public class Home extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        homeUsername = new javax.swing.JLabel();
+        menu = new javax.swing.JPanel();
+        logo = new javax.swing.JLabel();
         LogoutBtn = new javax.swing.JButton();
+        mensagem = new javax.swing.JPanel();
+        bemvindo = new javax.swing.JLabel();
+        homeUsername = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Home");
+        setPreferredSize(new java.awt.Dimension(800, 600));
+        setSize(new java.awt.Dimension(800, 600));
 
-        jLabel1.setText("Bem vindo");
+        menu.setBackground(new java.awt.Color(0, 71, 171));
+        menu.setPreferredSize(new java.awt.Dimension(800, 80));
 
-        homeUsername.setText("Jack");
+        logo.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        logo.setForeground(new java.awt.Color(255, 255, 255));
+        logo.setText("UserVault");
 
-        LogoutBtn.setText("Sair");
+        LogoutBtn.setBackground(new java.awt.Color(0, 71, 171));
+        LogoutBtn.setForeground(new java.awt.Color(0, 71, 171));
+        LogoutBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/logout.png"))); // NOI18N
+        LogoutBtn.setBorder(null);
+        LogoutBtn.setBorderPainted(false);
         LogoutBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 LogoutBtnActionPerformed(evt);
             }
         });
 
+        javax.swing.GroupLayout menuLayout = new javax.swing.GroupLayout(menu);
+        menu.setLayout(menuLayout);
+        menuLayout.setHorizontalGroup(
+            menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(menuLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(logo)
+                .addGap(0, 625, Short.MAX_VALUE)
+                .addComponent(LogoutBtn)
+                .addGap(24, 24, 24))
+        );
+        menuLayout.setVerticalGroup(
+            menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(logo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(LogoutBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(24, 24, 24))
+        );
+
+        bemvindo.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        bemvindo.setText("Bem-vindo!");
+
+        homeUsername.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        homeUsername.setText("Jack");
+
+        javax.swing.GroupLayout mensagemLayout = new javax.swing.GroupLayout(mensagem);
+        mensagem.setLayout(mensagemLayout);
+        mensagemLayout.setHorizontalGroup(
+            mensagemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mensagemLayout.createSequentialGroup()
+                .addComponent(bemvindo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(homeUsername)
+                .addGap(0, 0, 0))
+        );
+        mensagemLayout.setVerticalGroup(
+            mensagemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mensagemLayout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addGroup(mensagemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bemvindo)
+                    .addComponent(homeUsername))
+                .addGap(0, 0, 0))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(homeUsername)
-                .addGap(162, 162, 162))
+            .addComponent(menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(148, 148, 148)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(LogoutBtn)
-                    .addComponent(jLabel1))
-                .addContainerGap(180, Short.MAX_VALUE))
+                .addContainerGap(270, Short.MAX_VALUE)
+                .addComponent(mensagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(269, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(114, 114, 114)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(homeUsername)
-                .addGap(47, 47, 47)
-                .addComponent(LogoutBtn)
-                .addContainerGap(78, Short.MAX_VALUE))
+                .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(160, 160, 160)
+                .addComponent(mensagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(312, 312, 312))
         );
 
         pack();
@@ -95,7 +147,10 @@ public class Home extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton LogoutBtn;
+    private javax.swing.JLabel bemvindo;
     private javax.swing.JLabel homeUsername;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel logo;
+    private javax.swing.JPanel mensagem;
+    private javax.swing.JPanel menu;
     // End of variables declaration//GEN-END:variables
 }

@@ -4,6 +4,14 @@
  */
 package sistemadecadastro;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.showMessageDialog;
+
 /**
  *
  * @author Windows
@@ -32,10 +40,10 @@ public class Login extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextEmailLogin = new javax.swing.JTextField();
-        jPasswordLogin = new javax.swing.JPasswordField();
+        loginUsername = new javax.swing.JTextField();
+        loginPassword = new javax.swing.JPasswordField();
         jButtonEntrar = new javax.swing.JButton();
-        jButtonEntrar1 = new javax.swing.JButton();
+        loginBtn = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -87,12 +95,10 @@ public class Login extends javax.swing.JFrame {
         jLabel3.setText("USUARIO");
         jPanel2.add(jLabel3);
         jLabel3.setBounds(410, 110, 60, 50);
-        jPanel2.add(jTextEmailLogin);
-        jTextEmailLogin.setBounds(410, 150, 330, 40);
-
-        jPasswordLogin.setText("jPasswordField1");
-        jPanel2.add(jPasswordLogin);
-        jPasswordLogin.setBounds(410, 300, 330, 40);
+        jPanel2.add(loginUsername);
+        loginUsername.setBounds(410, 150, 330, 40);
+        jPanel2.add(loginPassword);
+        loginPassword.setBounds(410, 300, 330, 40);
 
         jButtonEntrar.setBackground(new java.awt.Color(255, 51, 51));
         jButtonEntrar.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
@@ -105,10 +111,15 @@ public class Login extends javax.swing.JFrame {
         jPanel2.add(jButtonEntrar);
         jButtonEntrar.setBounds(530, 440, 100, 20);
 
-        jButtonEntrar1.setBackground(new java.awt.Color(255, 51, 51));
-        jButtonEntrar1.setText("ENTRAR");
-        jPanel2.add(jButtonEntrar1);
-        jButtonEntrar1.setBounds(410, 370, 80, 40);
+        loginBtn.setBackground(new java.awt.Color(255, 51, 51));
+        loginBtn.setText("ENTRAR");
+        loginBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginBtnActionPerformed(evt);
+            }
+        });
+        jPanel2.add(loginBtn);
+        loginBtn.setBounds(410, 370, 80, 40);
 
         jLabel5.setText("Não tem uma conta?");
         jPanel2.add(jLabel5);
@@ -142,10 +153,60 @@ public class Login extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButtonEntrarActionPerformed
 
+    private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
+        // TODO add your handling code here:
+        System.out.println("Botão clicado");
+        
+        String username, password, query, name = null, passwordDB = null;
+        String SUrl, SUser, SPass;
+        SUrl = "jdbc:MySQL://localhost:3306/uservault";
+        SUser = "root";
+        SPass = "Data@Fit";
+        int notFound = 0;
+        
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection(SUrl, SUser, SPass);
+            Statement st = con.createStatement();
+            if ("".equals(loginUsername.getText())){
+                JOptionPane.showMessageDialog(new JFrame(), "Usuário é necessário", "Erro", JOptionPane.ERROR_MESSAGE);
+            } else if ("".equals(loginPassword.getText())){
+                JOptionPane.showMessageDialog(new JFrame(), "Senha é necessário", "Erro", JOptionPane.ERROR_MESSAGE);
+            } else {
+                username = loginUsername.getText();
+                password = loginPassword.getText();
+                 
+                query = "SELECT * FROM user WHERE username= '"+username+"'";
+                ResultSet rs = st.executeQuery(query);
+                while(rs.next()){
+                    passwordDB = rs.getString("password");
+                    name = rs.getString("full_name");
+                    notFound = 1;
+                }
+                
+                if(notFound == 1 && password.equals(passwordDB)){
+                       System.out.println("OK");
+                        Home HomeFrame = new Home();
+                        HomeFrame.setUser(name);
+                        HomeFrame.setVisible(true);
+                        HomeFrame.pack();
+                        HomeFrame.setLocationRelativeTo(null); 
+                        this.dispose();
+                       
+                } else {
+                      JOptionPane.showMessageDialog(new JFrame(), "Credenciais incorretas", "Erro", JOptionPane.ERROR_MESSAGE);
+                }
+                
+                loginPassword.setText("");
+            }
+        } catch(Exception e) {
+            System.out.println("Error!" + e.getMessage());
+        }
+    }//GEN-LAST:event_loginBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonEntrar;
-    private javax.swing.JButton jButtonEntrar1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -153,7 +214,8 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPasswordField jPasswordLogin;
-    private javax.swing.JTextField jTextEmailLogin;
+    private javax.swing.JButton loginBtn;
+    private javax.swing.JPasswordField loginPassword;
+    private javax.swing.JTextField loginUsername;
     // End of variables declaration//GEN-END:variables
 }

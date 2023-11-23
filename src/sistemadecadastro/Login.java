@@ -20,7 +20,7 @@ public class Login extends javax.swing.JFrame {
     private void initComponents() {
 
         banner = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        logo = new javax.swing.JLabel();
         formLogin = new javax.swing.JPanel();
         login = new javax.swing.JLabel();
         labelUsuario = new javax.swing.JLabel();
@@ -41,7 +41,7 @@ public class Login extends javax.swing.JFrame {
         banner.setBackground(new java.awt.Color(0, 71, 171));
         banner.setPreferredSize(new java.awt.Dimension(400, 500));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/uservault.png"))); // NOI18N
+        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/uservault.png"))); // NOI18N
 
         javax.swing.GroupLayout bannerLayout = new javax.swing.GroupLayout(banner);
         banner.setLayout(bannerLayout);
@@ -49,14 +49,14 @@ public class Login extends javax.swing.JFrame {
             bannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bannerLayout.createSequentialGroup()
                 .addGap(75, 75, 75)
-                .addComponent(jLabel1)
+                .addComponent(logo)
                 .addGap(75, 75, 75))
         );
         bannerLayout.setVerticalGroup(
             bannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bannerLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addComponent(logo)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -262,13 +262,13 @@ public class Login extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel banner;
     private javax.swing.JPanel formLogin;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel labelSenha;
     private javax.swing.JLabel labelUsuario;
     private javax.swing.JLabel login;
     private javax.swing.JButton loginBtn;
     private javax.swing.JPasswordField loginPassword;
     private javax.swing.JTextField loginUsername;
+    private javax.swing.JLabel logo;
     private javax.swing.JLabel naoTemUmaConta;
     private javax.swing.JButton signupBtn;
     // End of variables declaration//GEN-END:variables

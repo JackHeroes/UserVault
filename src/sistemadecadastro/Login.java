@@ -20,11 +20,12 @@ public class Login extends javax.swing.JFrame {
     private void initComponents() {
 
         banner = new javax.swing.JPanel();
+        logo = new javax.swing.JLabel();
         formLogin = new javax.swing.JPanel();
         login = new javax.swing.JLabel();
-        usuario = new javax.swing.JLabel();
+        labelUsuario = new javax.swing.JLabel();
         loginUsername = new javax.swing.JTextField();
-        senha = new javax.swing.JLabel();
+        labelSenha = new javax.swing.JLabel();
         loginPassword = new javax.swing.JPasswordField();
         loginBtn = new javax.swing.JButton();
         naoTemUmaConta = new javax.swing.JLabel();
@@ -33,22 +34,30 @@ public class Login extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("LOGIN");
         setBackground(new java.awt.Color(255, 255, 255));
-        setPreferredSize(new java.awt.Dimension(830, 500));
+        setPreferredSize(new java.awt.Dimension(800, 600));
         setResizable(false);
-        setSize(new java.awt.Dimension(830, 500));
+        setSize(new java.awt.Dimension(800, 600));
 
         banner.setBackground(new java.awt.Color(0, 71, 171));
         banner.setPreferredSize(new java.awt.Dimension(400, 500));
+
+        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/uservault.png"))); // NOI18N
 
         javax.swing.GroupLayout bannerLayout = new javax.swing.GroupLayout(banner);
         banner.setLayout(bannerLayout);
         bannerLayout.setHorizontalGroup(
             bannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bannerLayout.createSequentialGroup()
+                .addGap(75, 75, 75)
+                .addComponent(logo)
+                .addGap(75, 75, 75))
         );
         bannerLayout.setVerticalGroup(
             bannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(bannerLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(logo)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         login.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
@@ -56,18 +65,13 @@ public class Login extends javax.swing.JFrame {
         login.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         login.setText("LOGIN");
 
-        usuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        usuario.setText("Usuário");
+        labelUsuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelUsuario.setText("Usuário");
 
         loginUsername.setMinimumSize(new java.awt.Dimension(330, 40));
-        loginUsername.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loginUsernameActionPerformed(evt);
-            }
-        });
 
-        senha.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        senha.setText("Senha");
+        labelSenha.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelSenha.setText("Senha");
 
         loginPassword.setPreferredSize(new java.awt.Dimension(330, 40));
 
@@ -103,8 +107,8 @@ public class Login extends javax.swing.JFrame {
                 .addGroup(formLoginLayout.createSequentialGroup()
                     .addGap(0, 0, 0)
                     .addGroup(formLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(usuario)
-                        .addComponent(senha)
+                        .addComponent(labelUsuario)
+                        .addComponent(labelSenha)
                         .addGroup(formLoginLayout.createSequentialGroup()
                             .addComponent(naoTemUmaConta)
                             .addGap(18, 18, 18)
@@ -123,19 +127,19 @@ public class Login extends javax.swing.JFrame {
                     .addGap(0, 0, 0)
                     .addComponent(login, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(18, 18, 18)
-                    .addComponent(usuario)
+                    .addComponent(labelUsuario)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(loginUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(senha)
+                    .addComponent(labelSenha)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(loginPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addComponent(loginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(18, 18, 18)
-                    .addGroup(formLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(naoTemUmaConta)
-                        .addComponent(signupBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(formLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(signupBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(naoTemUmaConta))
                     .addGap(0, 0, 0)))
         );
 
@@ -151,16 +155,47 @@ public class Login extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(banner, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(banner, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(108, 108, 108)
+                .addGap(158, 158, 158)
                 .addComponent(formLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(108, 108, 108))
+                .addGap(158, 158, 158))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public class DatabaseManager {
+        private static final String SUrl = "jdbc:MySQL://localhost:3306/uservault";
+        private static final String SUser = "root";
+        private static final String SPass = "Data@Fit";
+        
+        public static Connection getConnection() throws SQLException {
+            return DriverManager.getConnection(SUrl, SUser, SPass);
+        }
+    }
+    
+    public class HashUtil {
+        
+        public static String hashPassword(char[] password) {
+            try {
+                MessageDigest md = MessageDigest.getInstance("SHA-256");
+                md.update(new String(password).getBytes());
+
+                byte[] digest = md.digest();
+
+                StringBuilder hexString = new StringBuilder();
+                for (byte b : digest) {
+                    hexString.append(String.format("%02x", b));
+                }
+
+                return hexString.toString();
+            } catch (NoSuchAlgorithmException e) {
+                throw new RuntimeException("Erro ao criptografar a senha", e);
+            }
+        }
+    }
+    
     private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
 
         String username = loginUsername.getText();
@@ -223,55 +258,18 @@ public class Login extends javax.swing.JFrame {
         CADASTRO.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_signupBtnActionPerformed
-
-    private void loginUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginUsernameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_loginUsernameActionPerformed
-    
-    public class DatabaseManager {
-        private static final String SUrl = "jdbc:MySQL://localhost:3306/uservault";
-        private static final String SUser = "root";
-        private static final String SPass = "Data@Fit";
-        
-        public static Connection getConnection() throws SQLException {
-            return DriverManager.getConnection(SUrl, SUser, SPass);
-        }
-    }
-    
-    public class HashUtil {
-        
-        public static String hashPassword(char[] password) {
-            try {
-                MessageDigest md = MessageDigest.getInstance("SHA-256");
-                md.update(new String(password).getBytes());
-
-                byte[] digest = md.digest();
-
-                StringBuilder hexString = new StringBuilder();
-                for (byte b : digest) {
-                    hexString.append(String.format("%02x", b));
-                }
-
-                return hexString.toString();
-            } catch (NoSuchAlgorithmException e) {
-                throw new RuntimeException("Erro ao criptografar a senha", e);
-            }
-        }
-    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel banner;
     private javax.swing.JPanel formLogin;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
+    private javax.swing.JLabel labelSenha;
+    private javax.swing.JLabel labelUsuario;
     private javax.swing.JLabel login;
     private javax.swing.JButton loginBtn;
     private javax.swing.JPasswordField loginPassword;
     private javax.swing.JTextField loginUsername;
+    private javax.swing.JLabel logo;
     private javax.swing.JLabel naoTemUmaConta;
-    private javax.swing.JLabel senha;
     private javax.swing.JButton signupBtn;
-    private javax.swing.JLabel usuario;
     // End of variables declaration//GEN-END:variables
 }

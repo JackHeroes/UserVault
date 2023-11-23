@@ -11,11 +11,12 @@ public class Staff extends javax.swing.JFrame {
     private void initComponents() {
 
         menu = new javax.swing.JPanel();
-        logo1 = new javax.swing.JLabel();
+        logo = new javax.swing.JLabel();
         LogoutBtn = new javax.swing.JButton();
         mensagem = new javax.swing.JPanel();
         bemvindo = new javax.swing.JLabel();
         staffUsername = new javax.swing.JLabel();
+        crudBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Staff");
@@ -26,14 +27,14 @@ public class Staff extends javax.swing.JFrame {
         menu.setBackground(new java.awt.Color(0, 71, 171));
         menu.setPreferredSize(new java.awt.Dimension(800, 80));
 
-        logo1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        logo1.setForeground(new java.awt.Color(255, 255, 255));
-        logo1.setText("UserVault");
+        logo.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        logo.setForeground(new java.awt.Color(255, 255, 255));
+        logo.setText("UserVault");
 
         LogoutBtn.setBackground(new java.awt.Color(0, 71, 171));
         LogoutBtn.setForeground(new java.awt.Color(0, 71, 171));
         LogoutBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/logout.png"))); // NOI18N
-        LogoutBtn.setBorder(null);
+        LogoutBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         LogoutBtn.setBorderPainted(false);
         LogoutBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -47,8 +48,8 @@ public class Staff extends javax.swing.JFrame {
             menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menuLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addComponent(logo1)
-                .addGap(0, 625, Short.MAX_VALUE)
+                .addComponent(logo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(LogoutBtn)
                 .addGap(24, 24, 24))
         );
@@ -57,13 +58,13 @@ public class Staff extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addGroup(menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(logo1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(logo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(LogoutBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(24, 24, 24))
         );
 
         bemvindo.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        bemvindo.setText("Bem-vindo administrador!");
+        bemvindo.setText("Bem-vindo!");
 
         staffUsername.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         staffUsername.setText("Jack");
@@ -88,29 +89,45 @@ public class Staff extends javax.swing.JFrame {
                 .addGap(0, 0, 0))
         );
 
+        crudBtn.setBackground(new java.awt.Color(0, 71, 171));
+        crudBtn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        crudBtn.setForeground(new java.awt.Color(255, 255, 255));
+        crudBtn.setText("Gerenciamento de usuário");
+        crudBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crudBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(154, 154, 154)
-                .addComponent(mensagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(mensagem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(crudBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(161, 161, 161)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addComponent(mensagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(312, 312, 312))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(crudBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void crudBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crudBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_crudBtnActionPerformed
 
     private void LogoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogoutBtnActionPerformed
         Login LOGIN = new Login();
@@ -151,7 +168,8 @@ public class Staff extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton LogoutBtn;
     private javax.swing.JLabel bemvindo;
-    private javax.swing.JLabel logo1;
+    private javax.swing.JButton crudBtn;
+    private javax.swing.JLabel logo;
     private javax.swing.JPanel mensagem;
     private javax.swing.JPanel menu;
     private javax.swing.JLabel staffUsername;

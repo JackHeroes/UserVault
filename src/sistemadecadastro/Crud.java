@@ -15,12 +15,24 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Crud extends javax.swing.JFrame {
-
+    
+    private String staffName = "";
+    
     public Crud() {
         initComponents();
         populateTable();
     }
-
+    
+    public Crud(String staffName) {
+        this.staffName = staffName;
+        initComponents();
+        populateTable();
+    }
+    
+    public String getStaffName() {
+        return staffName;
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -613,10 +625,11 @@ public class Crud extends javax.swing.JFrame {
     }//GEN-LAST:event_deleteBtnActionPerformed
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
-        Staff staff = new Staff(name);
-        staff.setVisible(true);
-        staff.pack();
-        staff.setLocationRelativeTo(null);
+        Staff STAFF = new Staff();
+        STAFF.setUser(staffName);
+        STAFF.setVisible(true);
+        STAFF.pack();
+        STAFF.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_backBtnActionPerformed
 

@@ -2,25 +2,15 @@ package sistemadecadastro;
 
 public class Staff extends javax.swing.JFrame {
     
-    private String userName;
-
-    // Restante do código...
-
-    // Adicione um novo construtor para aceitar o nome do usuário
-    public Staff(String userName) {
-        this.userName = userName;
+    private String name;
+    
+    public Staff() {
         initComponents();
-        // Restante do código...
     }
-
-    // Getter para obter o nome do usuário
-    public String getUserName() {
-        return userName;
-    }
-
-    // Método para configurar o nome do usuário
-    public void setUser(String userName) {
-        this.userName = userName;
+    
+    public void setUser(String name){
+        this.name = name;
+        staffUsername.setText(name);
     }
     
     @SuppressWarnings("unchecked")
@@ -145,7 +135,7 @@ public class Staff extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void crudBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crudBtnActionPerformed
-        Crud CRUD = new Crud();
+        Crud CRUD = new Crud(name);
         CRUD.setVisible(true);
         CRUD.pack();
         CRUD.setLocationRelativeTo(null);

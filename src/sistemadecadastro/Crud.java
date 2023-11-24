@@ -436,6 +436,8 @@ public class Crud extends javax.swing.JFrame {
             createEmail.setText("");
             createPassword.setText("");
             createConfirmPassword.setText("");
+            createSimStaff.setSelected(false); 
+            createNaoStaff.setSelected(true);  
             showMessageDialog(null, "Usuário criado com sucesso!");
         } catch (SQLException e) {
             System.out.println("Erro ao acessar o banco de dados: " + e.getMessage());
@@ -456,26 +458,16 @@ public class Crud extends javax.swing.JFrame {
         String username = createUsername.getText();
         String email = createEmail.getText();
         char[] password = createPassword.getPassword();
+        char[] confirmPassword = createConfirmPassword.getPassword();
         boolean isStaff = createSimStaff.isSelected();
 
-        if (name.isEmpty() || username.isEmpty() || email.isEmpty() || password.length == 0) {
-            showMessageDialog(null, "Todos os campos são obrigatórios", "Erro", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
-        if (!isValidEmail(email)) {
-            showMessageDialog(null, "O formato do email é inválido.");
-            return;
-        }
-
-        if (!isStrongPassword(password)) {
-            showMessageDialog(null, "A senha não atende aos critérios de segurança. "
-                    + "A senha precisa ter no mínimo 8 caracteres, sendo pelo menos um maiúsculo, um minúsculo, um número e um caractere especial.");
+        if (!Arrays.equals(password, confirmPassword)) {
+            showMessageDialog(null, "As senhas não coincidem. Por favor, confirme a senha corretamente.");
             return;
         }
 
         try (Connection con = DatabaseManager.getConnection()) {
-            
+
             String query = "SELECT COUNT(*) FROM user WHERE (username = ? OR email = ?) AND id_user <> ?";
             try (PreparedStatement ps = con.prepareStatement(query)) {
                 ps.setString(1, username);
@@ -484,37 +476,92 @@ public class Crud extends javax.swing.JFrame {
 
                 try (ResultSet rs = ps.executeQuery()) {
                     if (rs.next() && rs.getInt(1) > 0) {
-                        showMessageDialog(null, "Nome de usuário ou email já existem. Escolha outro.");
+                        showMessageDialog(null, "Nome de usuário ou e-mail já existem. Escolha outro.");
                         return;
                     }
                 }
             }
 
-            query = "UPDATE user SET username = ?, full_name = ?, email = ?, password = ?, is_staff = ? WHERE id_user = ?";
-            try (PreparedStatement ps = con.prepareStatement(query)) {
-                ps.setString(1, username);
-                ps.setString(2, name);
-                ps.setString(3, email);
-                ps.setString(4, HashUtil.hashPassword(password));
-                ps.setBoolean(5, isStaff);
-                ps.setInt(6, userId);
+            StringBuilder sqlBuilder = new StringBuilder("UPDATE user SET");
+
+            if (!name.isEmpty()) {
+                sqlBuilder.append(" full_name = ?,");
+            }
+            if (!username.isEmpty()) {
+                sqlBuilder.append(" username = ?,");
+            }
+            if (!email.isEmpty()) {
+                if (!isValidEmail(email)) {
+                    showMessageDialog(null, "O formato do e-mail é inválido.");
+                    return;
+                }
+                sqlBuilder.append(" email = ?,");
+            }
+            if (password.length > 0) {
+                if (!isStrongPassword(password)) {
+                    showMessageDialog(null, "A senha não atende aos critérios de segurança. "
+                            + "A senha precisa ter no mínimo 8 caracteres, sendo pelo menos um maiúsculo, um minúsculo, um número e um caractere especial.");
+                    return;
+                }
+                sqlBuilder.append(" password = ?,");
+            }
+            sqlBuilder.append(" is_staff = ?");
+
+            if (sqlBuilder.charAt(sqlBuilder.length() - 1) == ',') {
+                sqlBuilder.deleteCharAt(sqlBuilder.length() - 1);
+            }
+
+            sqlBuilder.append(" WHERE id_user = ?");
+
+            try (PreparedStatement ps = con.prepareStatement(sqlBuilder.toString())) {
+                int paramIndex = 1;
+
+                if (!name.isEmpty()) {
+                    ps.setString(paramIndex++, name);
+                }
+                if (!username.isEmpty()) {
+                    ps.setString(paramIndex++, username);
+                }
+                if (!email.isEmpty()) {
+                    ps.setString(paramIndex++, email);
+                }
+                if (password.length > 0) {
+                    ps.setString(paramIndex++, HashUtil.hashPassword(password));
+                }
+                ps.setBoolean(paramIndex++, isStaff);
+                ps.setInt(paramIndex, userId);
 
                 int affectedRows = ps.executeUpdate();
 
                 if (affectedRows > 0) {
-                      
                     DefaultTableModel model = (DefaultTableModel) usuarios.getModel();
-                    model.setValueAt(name, selectedRow, 1);
-                    model.setValueAt(username, selectedRow, 2);
-                    model.setValueAt(email, selectedRow, 3);
-                    model.setValueAt(HashUtil.hashPassword(password), selectedRow, 4);
-                    model.setValueAt(isStaff, selectedRow, 5);
 
+                    if (!name.isEmpty()) {
+                        model.setValueAt(name, selectedRow, 1);
+                    }
+                    if (!username.isEmpty()) {
+                        model.setValueAt(username, selectedRow, 2);
+                    }
+                    if (!email.isEmpty()) {
+                        model.setValueAt(email, selectedRow, 3);
+                    }
+                    if (password.length > 0) {
+                        model.setValueAt(HashUtil.hashPassword(password), selectedRow, 4);
+                    }
+                    model.setValueAt(isStaff, selectedRow, 5);
+                    
+                    createName.setText("");
+                    createUsername.setText("");
+                    createEmail.setText("");
+                    createPassword.setText("");
+                    createConfirmPassword.setText("");
+                    createSimStaff.setSelected(false); 
+                    createNaoStaff.setSelected(true);  
                     showMessageDialog(null, "Usuário atualizado com sucesso!");
                 } else {
                     showMessageDialog(null, "Falha ao atualizar usuário. Verifique os dados e tente novamente.");
                 }
-             }
+            }
         } catch (SQLException e) {
             System.out.println("Erro ao acessar o banco de dados: " + e.getMessage());
         }

@@ -2,8 +2,25 @@ package sistemadecadastro;
 
 public class Staff extends javax.swing.JFrame {
     
-    public Staff() {
+    private String userName;
+
+    // Restante do código...
+
+    // Adicione um novo construtor para aceitar o nome do usuário
+    public Staff(String userName) {
+        this.userName = userName;
         initComponents();
+        // Restante do código...
+    }
+
+    // Getter para obter o nome do usuário
+    public String getUserName() {
+        return userName;
+    }
+
+    // Método para configurar o nome do usuário
+    public void setUser(String userName) {
+        this.userName = userName;
     }
     
     @SuppressWarnings("unchecked")
@@ -142,10 +159,6 @@ public class Staff extends javax.swing.JFrame {
         LOGIN.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_LogoutBtnActionPerformed
-
-    public void setUser(String name){
-        staffUsername.setText(name);
-    }
     
     public static void main(String args[]) {
         

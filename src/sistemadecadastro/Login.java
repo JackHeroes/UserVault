@@ -246,8 +246,7 @@ public class Login extends javax.swing.JFrame {
                         HOME.setLocationRelativeTo(null);
                         this.dispose();
                     } else {
-                        Staff STAFF = new Staff();
-                        STAFF.setUser(name);
+                        Staff STAFF = new Staff("name");
                         STAFF.setVisible(true);
                         STAFF.pack();
                         STAFF.setLocationRelativeTo(null);

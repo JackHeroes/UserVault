@@ -94,6 +94,7 @@ public class Staff extends javax.swing.JFrame {
         crudBtn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         crudBtn.setForeground(new java.awt.Color(255, 255, 255));
         crudBtn.setText("Gerenciamento de usuário");
+        crudBtn.setFocusPainted(false);
         crudBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 crudBtnActionPerformed(evt);

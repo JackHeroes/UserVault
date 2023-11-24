@@ -91,6 +91,7 @@ public class Cadastro extends javax.swing.JFrame {
 
         SignUpBtn.setBackground(new java.awt.Color(0, 71, 171));
         SignUpBtn.setForeground(new java.awt.Color(255, 255, 255));
+        SignUpBtn.setFocusPainted(false);
         SignUpBtn.setLabel("CADASTRAR");
         SignUpBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,6 +105,7 @@ public class Cadastro extends javax.swing.JFrame {
         loginBtn.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         loginBtn.setForeground(new java.awt.Color(255, 255, 255));
         loginBtn.setText("LOGIN");
+        loginBtn.setFocusPainted(false);
         loginBtn.setPreferredSize(new java.awt.Dimension(120, 20));
         loginBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

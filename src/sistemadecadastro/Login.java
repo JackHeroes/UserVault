@@ -89,6 +89,7 @@ public class Login extends javax.swing.JFrame {
         loginBtn.setBackground(new java.awt.Color(0, 71, 171));
         loginBtn.setForeground(new java.awt.Color(255, 255, 255));
         loginBtn.setText("ENTRAR");
+        loginBtn.setFocusPainted(false);
         loginBtn.setPreferredSize(new java.awt.Dimension(330, 40));
         loginBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,6 +103,7 @@ public class Login extends javax.swing.JFrame {
         signupBtn.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         signupBtn.setForeground(new java.awt.Color(255, 255, 255));
         signupBtn.setText("CADASTRAR-SE");
+        signupBtn.setFocusPainted(false);
         signupBtn.setPreferredSize(new java.awt.Dimension(120, 20));
         signupBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

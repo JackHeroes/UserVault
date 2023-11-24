@@ -66,21 +66,21 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="jLabel1" max="32767" attributes="0"/>
+              <Component id="gerenciamentoDeUsuario" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                  <Component id="jLabel1" min="-2" pref="41" max="-2" attributes="0"/>
+                  <Component id="gerenciamentoDeUsuario" min="-2" pref="41" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="jLabel1">
+        <Component class="javax.swing.JLabel" name="gerenciamentoDeUsuario">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI Black" size="18" style="0"/>
@@ -115,14 +115,14 @@
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          <Component id="jBUpdate" min="-2" pref="100" max="-2" attributes="0"/>
+                          <Component id="updateBtn" min="-2" pref="100" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jBDelete" min="-2" pref="100" max="-2" attributes="0"/>
+                          <Component id="deleteBtn" min="-2" pref="100" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
-                          <Component id="formRegister" min="-2" max="-2" attributes="0"/>
+                          <Component id="create" min="-2" max="-2" attributes="0"/>
                           <EmptySpace pref="34" max="32767" attributes="0"/>
-                          <Component id="jScrollPane1" min="-2" pref="625" max="-2" attributes="0"/>
+                          <Component id="table" min="-2" pref="625" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
@@ -134,13 +134,13 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace pref="31" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jBDelete" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                      <Component id="jBUpdate" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="deleteBtn" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="updateBtn" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="formRegister" max="32767" attributes="0"/>
-                      <Component id="jScrollPane1" max="32767" attributes="0"/>
+                      <Component id="create" max="32767" attributes="0"/>
+                      <Component id="table" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace pref="31" max="32767" attributes="0"/>
               </Group>
@@ -148,7 +148,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="jBUpdate">
+        <Component class="javax.swing.JButton" name="updateBtn">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ab" green="47" red="0" type="rgb"/>
@@ -159,7 +159,7 @@
             <Property name="text" type="java.lang.String" value="ATUALIZAR"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jBDelete">
+        <Component class="javax.swing.JButton" name="deleteBtn">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ab" green="47" red="0" type="rgb"/>
@@ -170,7 +170,7 @@
             <Property name="text" type="java.lang.String" value="EXCLUIR"/>
           </Properties>
         </Component>
-        <Container class="javax.swing.JPanel" name="formRegister">
+        <Container class="javax.swing.JPanel" name="create">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="66" green="66" red="66" type="rgb"/>
@@ -180,12 +180,12 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="SignUpBtn" max="32767" attributes="0"/>
-                  <Component id="registerConfirmPassword" alignment="0" max="32767" attributes="0"/>
-                  <Component id="registerPassword" alignment="0" max="32767" attributes="0"/>
-                  <Component id="registerEmail" alignment="0" max="32767" attributes="0"/>
-                  <Component id="registerUsername" alignment="0" max="32767" attributes="0"/>
-                  <Component id="registerName" alignment="0" max="32767" attributes="0"/>
+                  <Component id="createBtn" max="32767" attributes="0"/>
+                  <Component id="createConfirmPassword" alignment="0" max="32767" attributes="0"/>
+                  <Component id="createPassword" alignment="0" max="32767" attributes="0"/>
+                  <Component id="createEmail" alignment="0" max="32767" attributes="0"/>
+                  <Component id="createUsername" alignment="0" max="32767" attributes="0"/>
+                  <Component id="createName" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="labelConfirmarSenha" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -198,9 +198,9 @@
                       <EmptySpace pref="148" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="jRadioButton1" min="-2" max="-2" attributes="0"/>
+                      <Component id="createNaoStaff" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jRadioButton2" min="-2" max="-2" attributes="0"/>
+                      <Component id="createSimStaff" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -211,32 +211,32 @@
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                       <Component id="labelNome" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="registerName" min="-2" pref="39" max="-2" attributes="0"/>
+                      <Component id="createName" min="-2" pref="39" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="labelUsuario" min="-2" pref="24" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="registerUsername" min="-2" pref="39" max="-2" attributes="0"/>
+                      <Component id="createUsername" min="-2" pref="39" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="labelEmail" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="registerEmail" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="createEmail" min="-2" pref="40" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="labelSenha" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="registerPassword" min="-2" pref="41" max="-2" attributes="0"/>
+                      <Component id="createPassword" min="-2" pref="41" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="labelConfirmarSenha" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="registerConfirmPassword" min="-2" pref="41" max="-2" attributes="0"/>
+                      <Component id="createConfirmPassword" min="-2" pref="41" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="labelStaff" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jRadioButton2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jRadioButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="createSimStaff" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="createNaoStaff" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="SignUpBtn" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="createBtn" min="-2" pref="40" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -250,10 +250,7 @@
                 <Property name="text" type="java.lang.String" value="Nome"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="registerName">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="registerNameActionPerformed"/>
-              </Events>
+            <Component class="javax.swing.JTextField" name="createName">
             </Component>
             <Component class="javax.swing.JLabel" name="labelUsuario">
               <Properties>
@@ -263,7 +260,7 @@
                 <Property name="text" type="java.lang.String" value="Usu&#xe1;rio"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="registerUsername">
+            <Component class="javax.swing.JTextField" name="createUsername">
             </Component>
             <Component class="javax.swing.JLabel" name="labelEmail">
               <Properties>
@@ -273,7 +270,7 @@
                 <Property name="text" type="java.lang.String" value="Email"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="registerEmail">
+            <Component class="javax.swing.JTextField" name="createEmail">
             </Component>
             <Component class="javax.swing.JLabel" name="labelSenha">
               <Properties>
@@ -283,7 +280,7 @@
                 <Property name="text" type="java.lang.String" value="Senha"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JPasswordField" name="registerPassword">
+            <Component class="javax.swing.JPasswordField" name="createPassword">
             </Component>
             <Component class="javax.swing.JLabel" name="labelConfirmarSenha">
               <Properties>
@@ -293,21 +290,7 @@
                 <Property name="text" type="java.lang.String" value="Confirme a senha"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JPasswordField" name="registerConfirmPassword">
-            </Component>
-            <Component class="javax.swing.JButton" name="SignUpBtn">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ab" green="47" red="0" type="rgb"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
-                <Property name="label" type="java.lang.String" value="CADASTRAR"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SignUpBtnActionPerformed"/>
-              </Events>
+            <Component class="javax.swing.JPasswordField" name="createConfirmPassword">
             </Component>
             <Component class="javax.swing.JLabel" name="labelStaff">
               <Properties>
@@ -317,7 +300,7 @@
                 <Property name="text" type="java.lang.String" value="O usu&#xe1;rio &#xe9; um administrador?"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JRadioButton" name="jRadioButton2">
+            <Component class="javax.swing.JRadioButton" name="createSimStaff">
               <Properties>
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="buttonGroup1"/>
@@ -328,10 +311,10 @@
                 <Property name="text" type="java.lang.String" value="N&#xe3;o"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButton2ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="createSimStaffActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JRadioButton" name="jRadioButton1">
+            <Component class="javax.swing.JRadioButton" name="createNaoStaff">
               <Properties>
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="buttonGroup1"/>
@@ -342,19 +325,33 @@
                 <Property name="text" type="java.lang.String" value="Sim"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButton1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="createNaoStaffActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="createBtn">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ab" green="47" red="0" type="rgb"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="label" type="java.lang.String" value="CADASTRAR"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="createBtnActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+        <Container class="javax.swing.JScrollPane" name="table">
           <AuxValues>
             <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
           </AuxValues>
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTable" name="jTClientes">
+            <Component class="javax.swing.JTable" name="usuarios">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="6" rowCount="0">

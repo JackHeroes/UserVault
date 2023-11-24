@@ -31,27 +31,27 @@ public class Crud extends javax.swing.JFrame {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        gerenciamentoDeUsuario = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jBUpdate = new javax.swing.JButton();
-        jBDelete = new javax.swing.JButton();
-        formRegister = new javax.swing.JPanel();
+        updateBtn = new javax.swing.JButton();
+        deleteBtn = new javax.swing.JButton();
+        create = new javax.swing.JPanel();
         labelNome = new javax.swing.JLabel();
-        registerName = new javax.swing.JTextField();
+        createName = new javax.swing.JTextField();
         labelUsuario = new javax.swing.JLabel();
-        registerUsername = new javax.swing.JTextField();
+        createUsername = new javax.swing.JTextField();
         labelEmail = new javax.swing.JLabel();
-        registerEmail = new javax.swing.JTextField();
+        createEmail = new javax.swing.JTextField();
         labelSenha = new javax.swing.JLabel();
-        registerPassword = new javax.swing.JPasswordField();
+        createPassword = new javax.swing.JPasswordField();
         labelConfirmarSenha = new javax.swing.JLabel();
-        registerConfirmPassword = new javax.swing.JPasswordField();
-        SignUpBtn = new javax.swing.JButton();
+        createConfirmPassword = new javax.swing.JPasswordField();
         labelStaff = new javax.swing.JLabel();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTClientes = new javax.swing.JTable();
+        createSimStaff = new javax.swing.JRadioButton();
+        createNaoStaff = new javax.swing.JRadioButton();
+        createBtn = new javax.swing.JButton();
+        table = new javax.swing.JScrollPane();
+        usuarios = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1020, 700));
@@ -61,22 +61,22 @@ public class Crud extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(0, 71, 171));
         jPanel1.setPreferredSize(new java.awt.Dimension(1020, 100));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Gerenciamento de usuário");
+        gerenciamentoDeUsuario.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        gerenciamentoDeUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        gerenciamentoDeUsuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        gerenciamentoDeUsuario.setText("Gerenciamento de usuário");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(gerenciamentoDeUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(gerenciamentoDeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29))
         );
 
@@ -84,24 +84,18 @@ public class Crud extends javax.swing.JFrame {
         jPanel2.setForeground(new java.awt.Color(255, 255, 255));
         jPanel2.setPreferredSize(new java.awt.Dimension(1020, 600));
 
-        jBUpdate.setBackground(new java.awt.Color(0, 71, 171));
-        jBUpdate.setForeground(new java.awt.Color(255, 255, 255));
-        jBUpdate.setText("ATUALIZAR");
+        updateBtn.setBackground(new java.awt.Color(0, 71, 171));
+        updateBtn.setForeground(new java.awt.Color(255, 255, 255));
+        updateBtn.setText("ATUALIZAR");
 
-        jBDelete.setBackground(new java.awt.Color(0, 71, 171));
-        jBDelete.setForeground(new java.awt.Color(255, 255, 255));
-        jBDelete.setText("EXCLUIR");
+        deleteBtn.setBackground(new java.awt.Color(0, 71, 171));
+        deleteBtn.setForeground(new java.awt.Color(255, 255, 255));
+        deleteBtn.setText("EXCLUIR");
 
-        formRegister.setBackground(new java.awt.Color(102, 102, 102));
+        create.setBackground(new java.awt.Color(102, 102, 102));
 
         labelNome.setForeground(new java.awt.Color(255, 255, 255));
         labelNome.setText("Nome");
-
-        registerName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                registerNameActionPerformed(evt);
-            }
-        });
 
         labelUsuario.setForeground(new java.awt.Color(255, 255, 255));
         labelUsuario.setText("Usuário");
@@ -115,48 +109,48 @@ public class Crud extends javax.swing.JFrame {
         labelConfirmarSenha.setForeground(new java.awt.Color(255, 255, 255));
         labelConfirmarSenha.setText("Confirme a senha");
 
-        SignUpBtn.setBackground(new java.awt.Color(0, 71, 171));
-        SignUpBtn.setForeground(new java.awt.Color(255, 255, 255));
-        SignUpBtn.setLabel("CADASTRAR");
-        SignUpBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SignUpBtnActionPerformed(evt);
-            }
-        });
-
         labelStaff.setForeground(new java.awt.Color(255, 255, 255));
         labelStaff.setText("O usuário é um administrador?");
 
-        buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jRadioButton2.setText("Não");
-        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+        buttonGroup1.add(createSimStaff);
+        createSimStaff.setForeground(new java.awt.Color(255, 255, 255));
+        createSimStaff.setText("Não");
+        createSimStaff.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton2ActionPerformed(evt);
+                createSimStaffActionPerformed(evt);
             }
         });
 
-        buttonGroup1.add(jRadioButton1);
-        jRadioButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jRadioButton1.setText("Sim");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+        buttonGroup1.add(createNaoStaff);
+        createNaoStaff.setForeground(new java.awt.Color(255, 255, 255));
+        createNaoStaff.setText("Sim");
+        createNaoStaff.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
+                createNaoStaffActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout formRegisterLayout = new javax.swing.GroupLayout(formRegister);
-        formRegister.setLayout(formRegisterLayout);
-        formRegisterLayout.setHorizontalGroup(
-            formRegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(SignUpBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(registerConfirmPassword)
-            .addComponent(registerPassword)
-            .addComponent(registerEmail)
-            .addComponent(registerUsername)
-            .addComponent(registerName)
-            .addGroup(formRegisterLayout.createSequentialGroup()
-                .addGroup(formRegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        createBtn.setBackground(new java.awt.Color(0, 71, 171));
+        createBtn.setForeground(new java.awt.Color(255, 255, 255));
+        createBtn.setLabel("CADASTRAR");
+        createBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createBtnActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout createLayout = new javax.swing.GroupLayout(create);
+        create.setLayout(createLayout);
+        createLayout.setHorizontalGroup(
+            createLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(createBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(createConfirmPassword)
+            .addComponent(createPassword)
+            .addComponent(createEmail)
+            .addComponent(createUsername)
+            .addComponent(createName)
+            .addGroup(createLayout.createSequentialGroup()
+                .addGroup(createLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labelConfirmarSenha)
                     .addComponent(labelUsuario)
                     .addComponent(labelNome)
@@ -164,46 +158,46 @@ public class Crud extends javax.swing.JFrame {
                     .addComponent(labelEmail)
                     .addComponent(labelStaff))
                 .addContainerGap(148, Short.MAX_VALUE))
-            .addGroup(formRegisterLayout.createSequentialGroup()
-                .addComponent(jRadioButton1)
+            .addGroup(createLayout.createSequentialGroup()
+                .addComponent(createNaoStaff)
                 .addGap(18, 18, 18)
-                .addComponent(jRadioButton2)
+                .addComponent(createSimStaff)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
-        formRegisterLayout.setVerticalGroup(
-            formRegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(formRegisterLayout.createSequentialGroup()
+        createLayout.setVerticalGroup(
+            createLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(createLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addComponent(labelNome)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(registerName, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(createName, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(labelUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(registerUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(createUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(labelEmail)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(registerEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(createEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(labelSenha)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(registerPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(createPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(labelConfirmarSenha)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(registerConfirmPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(createConfirmPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(labelStaff)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(formRegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton2)
-                    .addComponent(jRadioButton1))
+                .addGroup(createLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(createSimStaff)
+                    .addComponent(createNaoStaff))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(SignUpBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(createBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jTClientes.setModel(new javax.swing.table.DefaultTableModel(
+        usuarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -226,8 +220,8 @@ public class Crud extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTClientes);
-        jTClientes.getAccessibleContext().setAccessibleName("");
+        table.setViewportView(usuarios);
+        usuarios.getAccessibleContext().setAccessibleName("");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -238,13 +232,13 @@ public class Crud extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jBUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(updateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jBDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(formRegister, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(create, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 625, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(table, javax.swing.GroupLayout.PREFERRED_SIZE, 625, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(25, 25, 25))
         );
         jPanel2Layout.setVerticalGroup(
@@ -252,12 +246,12 @@ public class Crud extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap(31, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(updateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(formRegister, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1))
+                    .addComponent(create, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(table))
                 .addContainerGap(31, Short.MAX_VALUE))
         );
 
@@ -282,21 +276,21 @@ public class Crud extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+    private void createNaoStaffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createNaoStaffActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
+    }//GEN-LAST:event_createNaoStaffActionPerformed
 
-    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+    private void createSimStaffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createSimStaffActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton2ActionPerformed
+    }//GEN-LAST:event_createSimStaffActionPerformed
 
-    private void SignUpBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignUpBtnActionPerformed
+    private void createBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createBtnActionPerformed
 
-        String name = registerName.getText();
-        String username = registerUsername.getText();
-        String email = registerEmail.getText();
-        char[] password = registerPassword.getPassword();
-        char[] confirmPassword = registerConfirmPassword.getPassword();
+        String name = createName.getText();
+        String username = createUsername.getText();
+        String email = createEmail.getText();
+        char[] password = createPassword.getPassword();
+        char[] confirmPassword = createConfirmPassword.getPassword();
 
         if (name.isEmpty() || username.isEmpty() || email.isEmpty() || password.length == 0) {
             JOptionPane.showMessageDialog(new JFrame(), "Todos os campos são obrigatórios", "Erro", JOptionPane.ERROR_MESSAGE);
@@ -338,11 +332,11 @@ public class Crud extends javax.swing.JFrame {
                 ps.executeUpdate();
             }
 
-            registerName.setText("");
-            registerUsername.setText("");
-            registerEmail.setText("");
-            registerPassword.setText("");
-            registerConfirmPassword.setText("");
+            createName.setText("");
+            createUsername.setText("");
+            createEmail.setText("");
+            createPassword.setText("");
+            createConfirmPassword.setText("");
             showMessageDialog(null, "Conta criada com sucesso!");
 
             Login LOGIN = new Login();
@@ -351,7 +345,7 @@ public class Crud extends javax.swing.JFrame {
             LOGIN.setLocationRelativeTo(null);
             this.dispose();
 
-            DefaultTableModel model = (DefaultTableModel) jTClientes.getModel();
+            DefaultTableModel model = (DefaultTableModel) usuarios.getModel();
 
             String nome = jTNome.getText();
             String usuario = jTUsuario.getText();
@@ -380,11 +374,7 @@ public class Crud extends javax.swing.JFrame {
         } catch (SQLException e) {
             System.out.println("Erro ao acessar o banco de dados: " + e.getMessage());
         }
-    }//GEN-LAST:event_SignUpBtnActionPerformed
-
-    private void registerNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_registerNameActionPerformed
+    }//GEN-LAST:event_createBtnActionPerformed
 
     
     
@@ -432,28 +422,28 @@ public class Crud extends javax.swing.JFrame {
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton SignUpBtn;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JPanel formRegister;
-    private javax.swing.JButton jBDelete;
-    private javax.swing.JButton jBUpdate;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel create;
+    private javax.swing.JButton createBtn;
+    private javax.swing.JPasswordField createConfirmPassword;
+    private javax.swing.JTextField createEmail;
+    private javax.swing.JTextField createName;
+    private javax.swing.JRadioButton createNaoStaff;
+    private javax.swing.JPasswordField createPassword;
+    private javax.swing.JRadioButton createSimStaff;
+    private javax.swing.JTextField createUsername;
+    private javax.swing.JButton deleteBtn;
+    private javax.swing.JLabel gerenciamentoDeUsuario;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTClientes;
     private javax.swing.JLabel labelConfirmarSenha;
     private javax.swing.JLabel labelEmail;
     private javax.swing.JLabel labelNome;
     private javax.swing.JLabel labelSenha;
     private javax.swing.JLabel labelStaff;
     private javax.swing.JLabel labelUsuario;
-    private javax.swing.JPasswordField registerConfirmPassword;
-    private javax.swing.JTextField registerEmail;
-    private javax.swing.JTextField registerName;
-    private javax.swing.JPasswordField registerPassword;
-    private javax.swing.JTextField registerUsername;
+    private javax.swing.JScrollPane table;
+    private javax.swing.JButton updateBtn;
+    private javax.swing.JTable usuarios;
     // End of variables declaration//GEN-END:variables
 }

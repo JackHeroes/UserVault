@@ -1,8 +1,8 @@
 package sistemadecadastro;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.DriverManager;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -443,7 +443,81 @@ public class Crud extends javax.swing.JFrame {
     }//GEN-LAST:event_createBtnActionPerformed
 
     private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
-        // TODO add your handling code here:
+        int selectedRow = usuarios.getSelectedRow();
+
+        if (selectedRow == -1) {
+            showMessageDialog(null, "Selecione uma linha para atualizar.");
+            return;
+        }
+
+        int userId = (int) usuarios.getValueAt(selectedRow, 0);
+
+        String name = createName.getText();
+        String username = createUsername.getText();
+        String email = createEmail.getText();
+        char[] password = createPassword.getPassword();
+        boolean isStaff = createSimStaff.isSelected();
+
+        if (name.isEmpty() || username.isEmpty() || email.isEmpty() || password.length == 0) {
+            showMessageDialog(null, "Todos os campos são obrigatórios", "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        if (!isValidEmail(email)) {
+            showMessageDialog(null, "O formato do email é inválido.");
+            return;
+        }
+
+        if (!isStrongPassword(password)) {
+            showMessageDialog(null, "A senha não atende aos critérios de segurança. "
+                    + "A senha precisa ter no mínimo 8 caracteres, sendo pelo menos um maiúsculo, um minúsculo, um número e um caractere especial.");
+            return;
+        }
+
+        try (Connection con = DatabaseManager.getConnection()) {
+            
+            String query = "SELECT COUNT(*) FROM user WHERE (username = ? OR email = ?) AND id_user <> ?";
+            try (PreparedStatement ps = con.prepareStatement(query)) {
+                ps.setString(1, username);
+                ps.setString(2, email);
+                ps.setInt(3, userId);
+
+                try (ResultSet rs = ps.executeQuery()) {
+                    if (rs.next() && rs.getInt(1) > 0) {
+                        showMessageDialog(null, "Nome de usuário ou email já existem. Escolha outro.");
+                        return;
+                    }
+                }
+            }
+
+            query = "UPDATE user SET username = ?, full_name = ?, email = ?, password = ?, is_staff = ? WHERE id_user = ?";
+            try (PreparedStatement ps = con.prepareStatement(query)) {
+                ps.setString(1, username);
+                ps.setString(2, name);
+                ps.setString(3, email);
+                ps.setString(4, HashUtil.hashPassword(password));
+                ps.setBoolean(5, isStaff);
+                ps.setInt(6, userId);
+
+                int affectedRows = ps.executeUpdate();
+
+                if (affectedRows > 0) {
+                      
+                    DefaultTableModel model = (DefaultTableModel) usuarios.getModel();
+                    model.setValueAt(name, selectedRow, 1);
+                    model.setValueAt(username, selectedRow, 2);
+                    model.setValueAt(email, selectedRow, 3);
+                    model.setValueAt(HashUtil.hashPassword(password), selectedRow, 4);
+                    model.setValueAt(isStaff, selectedRow, 5);
+
+                    showMessageDialog(null, "Usuário atualizado com sucesso!");
+                } else {
+                    showMessageDialog(null, "Falha ao atualizar usuário. Verifique os dados e tente novamente.");
+                }
+             }
+        } catch (SQLException e) {
+            System.out.println("Erro ao acessar o banco de dados: " + e.getMessage());
+        }
     }//GEN-LAST:event_updateBtnActionPerformed
 
     private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed

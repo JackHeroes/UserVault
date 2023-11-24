@@ -84,11 +84,21 @@ public class Crud extends javax.swing.JFrame {
         updateBtn.setForeground(new java.awt.Color(255, 255, 255));
         updateBtn.setText("ATUALIZAR");
         updateBtn.setFocusPainted(false);
+        updateBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateBtnActionPerformed(evt);
+            }
+        });
 
         deleteBtn.setBackground(new java.awt.Color(0, 71, 171));
         deleteBtn.setForeground(new java.awt.Color(255, 255, 255));
         deleteBtn.setText("EXCLUIR");
         deleteBtn.setFocusPainted(false);
+        deleteBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteBtnActionPerformed(evt);
+            }
+        });
 
         create.setBackground(new java.awt.Color(102, 102, 102));
 
@@ -431,6 +441,37 @@ public class Crud extends javax.swing.JFrame {
             System.out.println("Erro ao acessar o banco de dados: " + e.getMessage());
         }
     }//GEN-LAST:event_createBtnActionPerformed
+
+    private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_updateBtnActionPerformed
+
+    private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
+        int selectedRow = usuarios.getSelectedRow();
+
+        if (selectedRow == -1) {
+            showMessageDialog(null, "Selecione uma linha para excluir.");
+            return;
+        }
+
+        int userId = (int) usuarios.getValueAt(selectedRow, 0);
+
+        try (Connection con = DatabaseManager.getConnection()) {
+            
+            String query = "DELETE FROM user WHERE id_user = ?";
+            try (PreparedStatement ps = con.prepareStatement(query)) {
+                ps.setInt(1, userId);
+                ps.executeUpdate();
+            }
+
+            DefaultTableModel model = (DefaultTableModel) usuarios.getModel();
+            model.removeRow(selectedRow);
+
+            showMessageDialog(null, "Usuário excluído com sucesso!");
+        } catch (SQLException e) {
+            System.out.println("Erro ao acessar o banco de dados: " + e.getMessage());
+        }
+    }//GEN-LAST:event_deleteBtnActionPerformed
 
     public static void main(String args[]) {
         

@@ -3,11 +3,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
-import java.sql.DriverManager;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 
 public class Login extends javax.swing.JFrame {
     
@@ -167,37 +164,6 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public class DatabaseManager {
-        private static final String SUrl = "jdbc:MySQL://localhost:3306/uservault";
-        private static final String SUser = "root";
-        private static final String SPass = "Data@Fit";
-        
-        public static Connection getConnection() throws SQLException {
-            return DriverManager.getConnection(SUrl, SUser, SPass);
-        }
-    }
-    
-    public class HashUtil {
-        
-        public static String hashPassword(char[] password) {
-            try {
-                MessageDigest md = MessageDigest.getInstance("SHA-256");
-                md.update(new String(password).getBytes());
-
-                byte[] digest = md.digest();
-
-                StringBuilder hexString = new StringBuilder();
-                for (byte b : digest) {
-                    hexString.append(String.format("%02x", b));
-                }
-
-                return hexString.toString();
-            } catch (NoSuchAlgorithmException e) {
-                throw new RuntimeException("Erro ao criptografar a senha", e);
-            }
-        }
-    }
-    
     private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
 
         String username = loginUsername.getText();

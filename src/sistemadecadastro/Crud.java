@@ -3,13 +3,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.DriverManager;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import static javax.swing.JOptionPane.showMessageDialog;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -278,10 +275,11 @@ public class Crud extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap(31, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(updateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(updateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(25, 25, 25)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(create, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -309,16 +307,6 @@ public class Crud extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    public class DatabaseManager {
-        private static final String SUrl = "jdbc:MySQL://localhost:3306/uservault";
-        private static final String SUser = "root";
-        private static final String SPass = "Data@Fit";
-        
-        public static Connection getConnection() throws SQLException {
-            return DriverManager.getConnection(SUrl, SUser, SPass);
-        }
-    }
     
     private void populateTable() {
         try (Connection con = DatabaseManager.getConnection()) {
@@ -361,28 +349,7 @@ public class Crud extends javax.swing.JFrame {
 
         return false;
     }
-    
-    public class HashUtil {
- 
-        public static String hashPassword(char[] password) {
-            try {
-                MessageDigest md = MessageDigest.getInstance("SHA-256");
-                md.update(new String(password).getBytes());
 
-                byte[] digest = md.digest();
-
-                StringBuilder hexString = new StringBuilder();
-                for (byte b : digest) {
-                    hexString.append(String.format("%02x", b));
-                }
-
-                return hexString.toString();
-            } catch (NoSuchAlgorithmException e) {
-                throw new RuntimeException("Erro ao criptografar a senha", e);
-            }
-        }
-    }
-     
     private boolean isValidEmail(String email) {
         Pattern pattern = Pattern.compile("^\\S+@\\S+\\.\\S+$");
         Matcher matcher = pattern.matcher(email);

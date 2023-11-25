@@ -19,7 +19,6 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        createSimStaff = new javax.swing.JRadioButton();
         banner = new javax.swing.JPanel();
         logo = new javax.swing.JLabel();
         formLogin = new javax.swing.JPanel();
@@ -31,16 +30,6 @@ public class Login extends javax.swing.JFrame {
         loginBtn = new javax.swing.JButton();
         naoTemUmaConta = new javax.swing.JLabel();
         signupBtn = new javax.swing.JButton();
-
-        createSimStaff.setBackground(new java.awt.Color(102, 102, 102));
-        createSimStaff.setForeground(new java.awt.Color(255, 255, 255));
-        createSimStaff.setText("Sim");
-        createSimStaff.setFocusPainted(false);
-        createSimStaff.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                createSimStaffActionPerformed(evt);
-            }
-        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("LOGIN");
@@ -271,14 +260,9 @@ public class Login extends javax.swing.JFrame {
         CADASTRO.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_signupBtnActionPerformed
-
-    private void createSimStaffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createSimStaffActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_createSimStaffActionPerformed
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel banner;
-    private javax.swing.JRadioButton createSimStaff;
     private javax.swing.JPanel formLogin;
     private javax.swing.JLabel labelSenha;
     private javax.swing.JLabel labelUsuario;

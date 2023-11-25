@@ -2,8 +2,15 @@ package sistemadecadastro;
 
 public class Home extends javax.swing.JFrame {
     
+    private String name;
+    
     public Home() {
         initComponents();
+    }
+    
+    public void setUser(String name){
+        this.name = name;
+        homeUsername.setText(name);
     }
     
     @SuppressWarnings("unchecked")
@@ -118,10 +125,6 @@ public class Home extends javax.swing.JFrame {
         LOGIN.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_LogoutBtnActionPerformed
-
-    public void setUser(String name){
-        homeUsername.setText(name);
-    }
 
     public static void main(String args[]) {
         

@@ -11,21 +11,21 @@ import java.util.Arrays;
 
 public class Crud extends javax.swing.JFrame {
     
-    private String staffName = "";
+    private String staffUsername = "";
     
     public Crud() {
         initComponents();
         populateTable();
     }
     
-    public Crud(String staffName) {
-        this.staffName = staffName;
+    public Crud(String staffUsername) {
+        this.staffUsername = staffUsername;
         initComponents();
         populateTable();
     }
     
-    public String getStaffName() {
-        return staffName;
+    public String getstaffUsername() {
+        return staffUsername;
     }
     
     @SuppressWarnings("unchecked")
@@ -556,7 +556,7 @@ public class Crud extends javax.swing.JFrame {
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
         Staff STAFF = new Staff();
-        STAFF.setUser(staffName);
+        STAFF.setUser(staffUsername);
         STAFF.setVisible(true);
         STAFF.pack();
         STAFF.setLocationRelativeTo(null);

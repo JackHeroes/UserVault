@@ -2,13 +2,10 @@ package sistemadecadastro;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.ResultSet;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.showMessageDialog;
 import java.util.Arrays;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class Cadastro extends javax.swing.JFrame {
     
@@ -194,40 +191,6 @@ public class Cadastro extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
-    private boolean userOrEmailExists(Connection con, String username, String email) throws SQLException {
-    String query = "SELECT COUNT(*) FROM user WHERE username = ? OR email = ?";
-    
-        try (PreparedStatement ps = con.prepareStatement(query)) {
-            ps.setString(1, username);
-            ps.setString(2, email);
-
-            try (ResultSet rs = ps.executeQuery()) {
-                if (rs.next()) {
-                    return rs.getInt(1) > 0; 
-                }
-            }
-        }
-
-        return false;
-    }
-
-    private boolean isValidEmail(String email) {
-        
-        Pattern pattern = Pattern.compile("^\\S+@\\S+\\.\\S+$");
-        Matcher matcher = pattern.matcher(email);
-
-        return matcher.matches();
-    }
-        
-    private boolean isStrongPassword(char[] password) {
-        String passwordStr = new String(password);
-
-        Pattern pattern = Pattern.compile("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$");
-        Matcher matcher = pattern.matcher(passwordStr);
-
-        return matcher.find();
-    }
        
     private void SignUpBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignUpBtnActionPerformed
 
@@ -242,12 +205,12 @@ public class Cadastro extends javax.swing.JFrame {
             return;
         }
                   
-        if (!isValidEmail(email)) {
+        if (!ValidatorEmail.isValidEmail(email)) {
             showMessageDialog(null, "O formato do email é inválido.");
             return;
         }
                      
-        if (!isStrongPassword(password)) {
+        if (!ValidatorPassword.isStrongPassword(password)) {
             showMessageDialog(null, "A senha não atende aos critérios de segurança. "
                     + "A senha precisa ter no mínimo 8 caracteres, sendo pelo menos um maiúsculo, um minusculo, um número e um caractere especial.");
             return;
@@ -260,7 +223,7 @@ public class Cadastro extends javax.swing.JFrame {
 
         try (Connection con = DatabaseManager.getConnection()) {
      
-            if (userOrEmailExists(con, username, email)) {
+            if (ValidatorUserEmail.userOrEmailExists(con, username, email)) {
                 showMessageDialog(null, "Usuário ou email já existem. Escolha outro.");
                 return;
             }
